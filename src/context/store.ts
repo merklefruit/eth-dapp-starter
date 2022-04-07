@@ -6,6 +6,6 @@ const initialState = {
   text: 'hello',
 };
 
-const useMyState = () => useState(initialState);
+const useGlobalState = () => useState(initialState);
 
-export const { Provider: SharedStateProvider, useTracked: useSharedState } = createContainer(useMyState);
+export const { Provider: SharedStateProvider, useTracked: useSharedState } = createContainer(useGlobalState);
