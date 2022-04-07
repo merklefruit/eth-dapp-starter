@@ -1,15 +1,29 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
+import { theme } from '@chakra-ui/react';
+
+import Router from './Router';
+
 import { SharedStateProvider } from './context/store';
 
-// Use custom theme later
-import { theme } from '@chakra-ui/react';
+import { DAppProvider, Mumbai } from '@usedapp/core';
+
+const DAppConfig = {
+  readOnlyChainId: Mumbai.chainId,
+  readOnlyUrls: {
+    [Mumbai.chainId]: 'https://rpc-mumbai.matic.today',
+  },
+  notifications: {
+    expirationPeriod: 3000,
+  },
+};
 
 export default function App() {
   return (
     <SharedStateProvider>
       <ChakraProvider theme={theme}>
-        <ColorModeSwitcher />
+        <DAppProvider config={DAppConfig}>
+          <Router />
+        </DAppProvider>
       </ChakraProvider>
     </SharedStateProvider>
   );
