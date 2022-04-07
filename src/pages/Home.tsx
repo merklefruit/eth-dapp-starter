@@ -1,5 +1,4 @@
-import { Text } from '@chakra-ui/react';
-import { ColorModeSwitcher } from '../components/ColorModeSwitcher';
+import { Text, Box } from '@chakra-ui/react';
 import { useSharedState } from '../context/store';
 
 export default function Home() {
@@ -9,14 +8,15 @@ export default function Home() {
   };
 
   return (
-    <>
-      <Text fontSize='2xl'>Homepage</Text>
-      <ColorModeSwitcher />
-
-      <div>
-        {state.count}
-        <button onClick={increment}>+1</button>
-      </div>
-    </>
+    <Box mx='auto'>
+      <Box p={4} rounded='lg' maxW='md' bg='gray.50' shadow='md'>
+        <Box p={4} rounded='lg' bg='gray.100' borderWidth='1px' borderColor='green.100'>
+          <Text>
+            This is some sample text that will go in the box. This is some sample text that will go in the box.
+          </Text>
+        </Box>
+        <Box p={4}>This is the content below.</Box>
+      </Box>
+    </Box>
   );
 }
