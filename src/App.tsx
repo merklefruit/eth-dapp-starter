@@ -1,28 +1,19 @@
 import { ChakraProvider } from '@chakra-ui/react';
-import { theme } from '@chakra-ui/react';
-
-import Router from './Router';
-
+import { DAppProvider } from '@usedapp/core';
+import { HelmetProvider } from 'react-helmet-async';
 import { SharedStateProvider } from './context/store';
-
-import { DAppProvider, Mumbai } from '@usedapp/core';
-
-const DAppConfig = {
-  readOnlyChainId: Mumbai.chainId,
-  readOnlyUrls: {
-    [Mumbai.chainId]: 'https://rpc-mumbai.matic.today',
-  },
-  notifications: {
-    expirationPeriod: 3000,
-  },
-};
+import { theme } from '@chakra-ui/react';
+import Router from './Router';
+import dAppConfig from './lib/dAppConfig';
 
 export default function App() {
   return (
     <SharedStateProvider>
       <ChakraProvider theme={theme}>
-        <DAppProvider config={DAppConfig}>
-          <Router />
+        <DAppProvider config={dAppConfig}>
+          <HelmetProvider>
+            <Router />
+          </HelmetProvider>
         </DAppProvider>
       </ChakraProvider>
     </SharedStateProvider>

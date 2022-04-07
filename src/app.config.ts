@@ -3,9 +3,11 @@ const config = {
   appDescription: 'ETH Dapp Demo starter kit.',
   socials: {
     github: 'https://github.com/nicolas-racchi/eth-dapp-starter',
-    twitter: 'https://twitter.com/conyeth',
-    medium: 'https://medium.com/@fiveelementslabs',
-    discord: 'https://discord.gg/invalid',
+    twitter: 'https://twitter.com/elonmusk',
+    discord: 'https://discord.gg/random',
+  },
+  web3: {
+    rpc: 'https://rpc-mumbai.matic.today',
   },
 };
 
