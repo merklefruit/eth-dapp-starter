@@ -12,7 +12,7 @@ export default function Connect(props: any) {
           {ens ?? shortenAddress(account)}
         </Button>
       ) : (
-        <Button onClick={() => activateBrowserWallet()} {...props}>
+        <Button onClick={activateBrowserWallet} {...props}>
           Connect Wallet
         </Button>
       )}

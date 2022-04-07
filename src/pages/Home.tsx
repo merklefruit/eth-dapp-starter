@@ -1,4 +1,4 @@
-import { Text, Box } from '@chakra-ui/react';
+import { Text, Box, Button, useColorModeValue } from '@chakra-ui/react';
 import { useSharedState } from '../context/store';
 
 export default function Home() {
@@ -8,14 +8,23 @@ export default function Home() {
   };
 
   return (
-    <Box mx='auto'>
-      <Box p={4} rounded='lg' maxW='md' bg='gray.50' shadow='md'>
-        <Box p={4} rounded='lg' bg='gray.100' borderWidth='1px' borderColor='green.100'>
+    <Box display='grid' placeItems='center' mt={10}>
+      <Box p={4} rounded='lg' maxW='md' bg={useColorModeValue('gray.50', 'gray.900')} shadow='md'>
+        <Box
+          p={4}
+          rounded='lg'
+          bg={useColorModeValue('gray.100', 'gray.800')}
+          borderWidth='1px'
+          borderColor={useColorModeValue('green.200', 'green.800')}
+        >
           <Text>
-            This is some sample text that will go in the box. This is some sample text that will go in the box.
+            This is a simple counter using the global state context API hook. You can see how convenient it is.
           </Text>
         </Box>
-        <Box p={4}>This is the content below.</Box>
+        <Box py={4}>Click the button to increase count. {state.count}</Box>
+        <Button colorScheme='gray' onClick={increment} w='full'>
+          Increment
+        </Button>
       </Box>
     </Box>
   );
