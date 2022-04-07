@@ -1,12 +1,14 @@
-import { Text, Box, Button, useColorModeValue } from '@chakra-ui/react';
+import { Text, Box, Button, useColorModeValue, ButtonGroup } from '@chakra-ui/react';
+import { useState } from 'react';
 import { useSharedState } from '../context/store';
 
 // This is a simple counter component that uses the shared state to increment
 // the counter value. Use it as reference for global context usage.
 export default function Counter() {
-  const [state, setState] = useSharedState();
+  const [state, dispatch] = useSharedState();
+  const [amount, setAmount] = useState(1);
   const increment = () => {
-    setState(prev => ({ ...prev, count: prev.count + 1 }));
+    dispatch({ type: 'INCREMENT', payload: amount });
   };
 
   return (
@@ -23,7 +25,17 @@ export default function Counter() {
             This is a simple counter using the global state context API hook. You can see how convenient it is.
           </Text>
         </Box>
-        <Box py={4}>Click the button to increase count. {state.count}</Box>
+        <Box py={4}>
+          Click the button to increase <b>{state.count}</b> by <b>{amount}</b>
+        </Box>
+        <ButtonGroup w='full' mb={2}>
+          <Button w='full' onClick={() => setAmount(amount + 1)}>
+            +
+          </Button>
+          <Button w='full' onClick={() => setAmount(amount - 1)}>
+            -
+          </Button>
+        </ButtonGroup>
         <Button colorScheme='gray' onClick={increment} w='full'>
           Increment
         </Button>

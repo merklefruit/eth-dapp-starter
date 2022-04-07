@@ -1,11 +1,8 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
 import { createContainer } from 'react-tracked';
 
-const initialState = {
-  count: 0,
-  text: 'hello',
-};
+import { reducer, initialState } from './reducer';
 
-const useGlobalState = () => useState(initialState);
+const useGlobalState = () => useReducer(reducer, initialState);
 
 export const { Provider: SharedStateProvider, useTracked: useSharedState } = createContainer(useGlobalState);
