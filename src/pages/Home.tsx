@@ -1,9 +1,11 @@
-import { Text, Box } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
+
+import Counter from '../components/Counter';
 
 export default function Home() {
   return (
     <Box>
-      <Text fontSize='2xl'>Home</Text>
+      <Counter />
     </Box>
   );
 }
